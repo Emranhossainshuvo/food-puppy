@@ -1,9 +1,9 @@
-import React from 'react';
+import Navbar from './Components/Shared/Navbar/Navbar';
 
 const App = () => {
   return (
-    <div>
-      
+    <div className='app'>
+        <Navbar /> 
     </div>
   );
 };
