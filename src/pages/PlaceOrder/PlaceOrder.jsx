@@ -4,7 +4,7 @@ import { StoreContext } from "../../context/StoreContext";
 
 const PlaceOrder = () => {
 
-    const {getTotalCartAmount} = useContext(StoreContext)
+    const { getTotalCartAmount } = useContext(StoreContext)
 
     return (
         <form className="place-order">
@@ -39,12 +39,12 @@ const PlaceOrder = () => {
                         <hr />
                         <div className="cart-total-details">
                             <p>Delivery fee</p>
-                            <p>${5}</p>
+                            <p>${getTotalCartAmount() === 0 ? 0 : 5}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
                             <b>Total</b>
-                            <b>${getTotalCartAmount() + 5}</b>
+                            <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 5}</b>
                         </div>
                     </div>
                     <button>Proceed to payment</button>
