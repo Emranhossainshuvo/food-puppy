@@ -57,6 +57,14 @@
     border-radius: 50%;
 }
 
+.red{
+    cursor: pointer;
+}
+
+.green{
+    cursor: pointer;
+}
+
 .food-item-counter{
     position: absolute;
     bottom: 15px;
