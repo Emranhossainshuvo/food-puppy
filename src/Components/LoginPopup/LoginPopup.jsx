@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useContext, useState } from "react";
 import "./LoginPopup.css"
 import { assets } from "../../assets/assets";
@@ -5,7 +6,7 @@ import { StoreContext } from "../../context/StoreContext";
 
 const LoginPopup = ({ setShowLogin }) => {
 
-    const {url} = useContext(StoreContext);
+    const { url } = useContext(StoreContext);
 
     const [currentState, setCurrentState] = useState("Register")
     const [data, setData] = useState({
@@ -16,6 +17,20 @@ const LoginPopup = ({ setShowLogin }) => {
 
     const onLogin = async (event) => {
         event.preventDefault();
+        let newUrl = url;
+        if (currentState === "Login") {
+            newUrl += "/api/user/login"
+        }
+        else {
+            newUrl += "/api/user/register"
+        }
+
+        const response = await axios.post(newUrl, data);
+
+        if (response.data.success) {
+            
+        }
+
     }
 
     const onChangeHandler = (event) => {
