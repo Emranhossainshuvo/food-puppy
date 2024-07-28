@@ -5,6 +5,17 @@ import { assets } from "../../assets/assets";
 const LoginPopup = ({ setShowLogin }) => {
 
     const [currentState, setCurrentState] = useState("Register")
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        password: ""
+    });
+
+    const onChangeHandler = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setData(data => ({ ...data, [name]: value }))
+    }
 
     return (
         <div className="login-popup">
@@ -15,11 +26,11 @@ const LoginPopup = ({ setShowLogin }) => {
                 </div>
                 <div className="login-popup-inputs">
                     {
-                        currentState === "Login" ? <></> : <input type="text" placeholder="Full Name" required />
+                        currentState === "Login" ? <></> : <input type="text" name="name" onChange={onChangeHandler} value={data?.name} placeholder="Full Name" required />
                     }
 
-                    <input type="email" placeholder="Email" required />
-                    <input type="password" placeholder="Password" required />
+                    <input name="email" onChange={onChangeHandler} value={data?.email} type="email" placeholder="Email" required />
+                    <input name="password" onChange={onChangeHandler} value={data?.password} type="password" placeholder="Password" required />
                 </div>
                 <button>{currentState === "Register" ? "Create Account" : "Login"}</button>
                 <div className="login-popup-condition">
@@ -28,9 +39,9 @@ const LoginPopup = ({ setShowLogin }) => {
                 </div>
                 {
                     currentState === "Login" ?
-                        <p>Create a new account? <span onClick={()=>setCurrentState("Register")}>Register here</span></p>
+                        <p>Create a new account? <span onClick={() => setCurrentState("Register")}>Register here</span></p>
                         :
-                        <p>Already have an account? <span onClick={()=>setCurrentState("Login")}>Login here</span></p>
+                        <p>Already have an account? <span onClick={() => setCurrentState("Login")}>Login here</span></p>
                 }
             </form>
         </div>
