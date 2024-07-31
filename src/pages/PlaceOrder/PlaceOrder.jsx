@@ -24,7 +24,16 @@ const PlaceOrder = () => {
     };
 
     const placeOrder = async (event) => {
-        
+        event.preventDefault();
+        let orderItems = [];
+        food_list?.map((item) => {
+            if (cartItems[item._id] > 0) {
+                let itemInfo = item;
+                itemInfo["quantity"] = cartItems[item?._id];
+                orderItems.push(itemInfo);
+            }
+        })
+        console.log(orderItems);
     }
 
     return (
