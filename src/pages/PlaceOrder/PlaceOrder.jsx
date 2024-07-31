@@ -21,10 +21,14 @@ const PlaceOrder = () => {
         const name = event.target?.name;
         const value = event.target?.value;
         setData(data => ({ ...data, [name]: value }))
+    };
+
+    const placeOrder = async (event) => {
+        
     }
 
     return (
-        <form className="place-order">
+        <form onSubmit={placeOrder} className="place-order">
             <div className="place-order-left">
                 <p className="title">
                     Delivery information
@@ -65,7 +69,7 @@ const PlaceOrder = () => {
                             <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 5}</b>
                         </div>
                     </div>
-                    <button>Proceed to payment</button>
+                    <button type="submit">Proceed to payment</button>
                 </div>
             </div>
         </form>
